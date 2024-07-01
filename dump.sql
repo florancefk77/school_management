@@ -15,7 +15,7 @@ CREATE TABLE `classes` (
 
 -- Insert initial data into the 'classes' table
 INSERT INTO `classes` (`id`, `name`, `Capacity`) VALUES
-(50, 'red', 40);
+(50, 'first', 40);
 
 -- Create the 'students' table
 CREATE TABLE `students` (
@@ -30,7 +30,7 @@ CREATE TABLE `students` (
 
 -- Insert initial data into the 'students' table
 INSERT INTO `students` (`id`, `first_name`, `class_id`, `Last_name`, `Phone`, `email`, `address`) VALUES
-(20, 'John', 1, 'Doe', '1234567890', 'john.doe@example.com', '123 Main St');
+(20, 'John', 50, 'Doe', '1234567890', 'john.doe@example.com', '123 Main St');
 
 -- Create the 'subjects' table
 CREATE TABLE `subjects` (
@@ -42,8 +42,8 @@ CREATE TABLE `subjects` (
 
 -- Insert initial data into the 'subjects' table
 INSERT INTO `subjects` (`id`, `name`, `class_id`, `Teacher_id`) VALUES
-(30, 'physics', 2, 4),
-(31, 'chemistry', 5, 6);
+(30, 'physics', 50, 60),
+(31, 'chemistry', 50, 60);
 
 -- Create the 'teachers' table
 CREATE TABLE `teachers` (
@@ -57,19 +57,20 @@ CREATE TABLE `teachers` (
 
 -- Insert initial data into the 'teachers' table
 INSERT INTO `teachers` (`id`, `First_name`, `Last_name`, `phone`, `Email`, `address`) VALUES
-(60, 'modar teacher1', 'ABD', '0987654321', 'modar.teacher1@example.com', '456 High St');
+(60, 'max', 'mustermann', '0987654321', 'max.mustermann@example.com', '456 High St');
 
 -- Create the 'users' table
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Insert initial data into the 'users' table
-INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(100, 'admin', 'adminpassword', 'admin@example.com');
+INSERT INTO `users` (`id`, `username`, `password`, `email` , `role`) VALUES
+(100, 'florance', 'florance', 'admin@example.com', 'admin' );
 
 -- Add primary key to 'classes' table
 ALTER TABLE `classes`
