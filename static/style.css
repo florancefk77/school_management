@@ -1,21 +1,22 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f0f0f0;
+    background-color: #1e1e2e; /* Base */
+    color: #cdd6f4; /* Text */
     padding: 20px;
 }
 
 .container {
     max-width: 800px;
     margin: auto;
-    background: #fff;
+    background: #313244; /* Surface0 */
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 h2 {
-    color: #333;
+    color: #f5c2e7; /* Pink */
 }
 
 form {
@@ -25,6 +26,7 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
+    color: #bac2de; /* Subtext1 */
 }
 
 input[type="text"],
@@ -34,22 +36,25 @@ select {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #6c7086; /* Overlay0 */
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #45475a; /* Surface1 */
+    color: #cdd6f4; /* Text */
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #a6e3a1; /* Green */
+    color: #11111b; /* Crust */
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #94e2d5; /* Teal */
 }
 
 table {
@@ -59,7 +64,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ccc;
+    border: 1px solid #6c7086; /* Overlay0 */
 }
 
 th, td {
@@ -67,15 +72,59 @@ th, td {
     text-align: left;
 }
 
+th {
+    background-color: #45475a; /* Surface1 */
+    color: #f5c2e7; /* Pink */
+}
+
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #313244; /* Surface0 */
+}
+
+tr:nth-child(odd) {
+    background-color: #45475a; /* Surface1 */
 }
 
 a {
-    color: #007bff;
+    color: #89b4fa; /* Blue */
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 a:hover {
+    color: #b4befe; /* Lavender */
     text-decoration: underline;
+}
+
+/* Add some accent colors for various elements */
+.card-header {
+    background-color: #45475a; /* Surface1 */
+    color: #f5c2e7; /* Pink */
+}
+
+.btn-primary {
+    background-color: #89b4fa; /* Blue */
+    color: #11111b; /* Crust */
+}
+
+.btn-primary:hover {
+    background-color: #b4befe; /* Lavender */
+}
+
+.btn-danger {
+    background-color: #f38ba8; /* Red */
+    color: #11111b; /* Crust */
+}
+
+.btn-danger:hover {
+    background-color: #eba0ac; /* Maroon */
+}
+
+.btn-info {
+    background-color: #94e2d5; /* Teal */
+    color: #11111b; /* Crust */
+}
+
+.btn-info:hover {
+    background-color: #89dceb; /* Sky */
 }
