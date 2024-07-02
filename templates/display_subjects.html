@@ -1,71 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subject Management</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<body>
-    <div class="management-container">
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="card-title">Add Subject</h5>
-            </div>
-            <div class="card-body">
-                {% if session['role'] == 'Admin' %}
-                <a href="{{ url_for('add_subject') }}" class="btn btn-primary">Add New Subject</a>
-                {% endif %}
-                <a href="{{ url_for('dashboard') }}" class="btn btn-info">GO To Dashboard</a>
-            </div>
-          
-        </div>
-        <h2>Subjects</h2>
-        <div class="table-responsive">
-            <table id="subject_table" class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Class ID </th>
-                        <th>Teacher ID </th>
-                        {% if session['role'] == 'Admin' %}
-                        <th>Action</th>
-                        {% endif %}
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for subject in subjects %}
-                    <tr>
-                        <td>{{ subject.id }}</td>
-                        <td>{{ subject.name }}</td>
-                        <td>{{ subject.class_id }}</td>
-                        <td>{{ subject.Teacher_id }}</td>
-                        {% if session['role'] == 'Admin' %}
-                        <td>
-                            <a href="{{ url_for('edit_subject', id=subject.id) }}" class="btn btn-sm btn-primary">Edit</a>
-                            <form action="{{ url_for('delete_subject', id=subject.id) }}" method="post" style="display:inline;">
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                            </form>
-                        </td>
-                        {% endif %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-       
-    </div>
-</body>
-</html> 
-<script>
-    $(document).ready(function() {
-        $('#subject_table').DataTable({
-            "pageLength": 5
-        });
-    });
-</script>
+{% extends "dashboard.html" %}
 
+{% block content %}
+<div class="management-container">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Subject Management</h5>
+        </div>
+        <div class="card-body">
+            {% if session['role'] == 'admin' %}
+            <a href="{{ url_for('add_subject') }}" class="btn btn-primary">Add New Subject</a>
+            {% endif %}
+        </div>
+    </div>
+    <h2>Subjects</h2>
+    <div class="table-responsive">
+        <table id="subject_table" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Class ID</th>
+                    <th>Teacher ID</th>
+                    {% if session['role'] == 'admin' %}
+                    <th>Action</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject in subjects %}
+                <tr>
+                    <td>{{ subject.id }}</td>
+                    <td>{{ subject.name }}</td>
+                    <td>{{ subject.class_id }}</td>
+                    <td>{{ subject.teacher_id }}</td>
+                    {% if session['role'] == 'admin' %}
+                    <td>
+                        <a href="{{ url_for('edit_subject', id=subject.id) }}" class="btn btn-sm btn-primary">Edit</a>
+                        <form action="{{ url_for('delete_subject', id=subject.id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

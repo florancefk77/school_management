@@ -1,59 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Student</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
-        <h2 class="mt-4">Add New Student</h2>
-        <form action="{{ url_for('save_student') }}" method="POST">
-            <input type="hidden" name="ID" id="ID" value="{{ student.id }}">
-            
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="first_name">First Name</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ student.first_name }}" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="last_name">Last Name</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" value="{{ student.Last_name }}" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="{{ student.Phone }}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ student.email }}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ student.address }}" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="class_id">Class</label>
-                <select class="form-control" id="class_id" name="class_id" required>
-                    {% for class in classes %}
-                        <option value="{{ class.id }}" {% if class.id == student.class_id %}selected{% endif %}>{{ class.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Save Student</button>
-        </form>
-    </div>
+{% extends "dashboard.html" %}
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% block content %}
+<div class="management-container">
+    <h2>Add New Student</h2>
+    <form action="{{ url_for('save_student') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+        <div class="form-group">
+            <label for="class_id">Class</label>
+            <select class="form-control" id="class_id" name="class_id" required>
+                {% for class in classes %}
+                    <option value="{{ class.id }}">{{ class.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Student</button>
+    </form>
+</div>
+{% endblock %}
