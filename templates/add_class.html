@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Class</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4">Add New Class</h2>
+        <form action="{{ url_for('save_class') }}" method="POST">
+            <input type="hidden" name="ID" id="ID" value="{{ classobj.id }}">
+            
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="first_name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ classobj.name }}" required>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label for="Capacity">Capacity</label>
+                    <input type="number" class="form-control" id="Capacity" name="Capacity" value="{{ classobj.Capacity }}" required>
+                </div>
+               
+            <div class="form-group col-md-12 ">
+            <button type="submit" class="btn btn-primary">Save Class</button>
+        </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

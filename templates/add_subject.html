@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New subject</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4">Add New Subject</h2>
+        <form action="{{ url_for('save_subject') }}" method="POST">
+            <input type="hidden" name="ID" id="ID" value="{{ subject.id }}">
+            
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="first_name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ subject.name }}" required>
+                </div>
+               
+        <div class="form-row col-md-12">
+            <div class="form-group col-md-6 ">
+                <label for="class_id">Class</label>
+                <select class="form-control" id="class_id" name="class_id" required>
+                    {% for class in classes %}
+                        <option value="{{ class.id }}" {% if class.id == subject.class_id %}selected{% endif %}>{{ class.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group col-md-6 ">
+                <label for="class_id">Teacher</label>
+                <select class="form-control" id="Teacher_id" name="Teacher_id" required>
+                    {% for teacher in Teachers %}
+                        <option value="{{ teacher.id }}" {% if teacher.id == subject.Teacher_id %}selected{% endif %}>{{ teacher.First_name }} {{ teacher.Last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            </div>
+            <div class="form-group col-md-12 ">
+            <button type="submit" class="btn btn-primary">Save subject</button>
+        </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
