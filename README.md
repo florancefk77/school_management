@@ -37,5 +37,5 @@ Subject management contains
 3. run `app.py` with python to start the server.
 
 ## about 
--author: Florance Kaitouh
--email: florance.kaitouh@stud.hshl.de
+- author: Florance Kaitouh
+- email: florance.kaitouh@stud.hshl.de
